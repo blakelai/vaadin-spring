@@ -1,0 +1,38 @@
+server:
+  port: 8443
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-alias: undertow
+  servlet:
+    session:
+      persistent: false
+      cookie:
+        http-only: true
+        secure: true
+
+vaadin:
+  urlMapping: /*
+  whitelisted-packages: com/github/blakelai/components,com/github/blakelai/views
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: XXXXXXXXXX.apps.googleusercontent.com
+            client-secret: XXXXXXXXXX
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+
+logging:
+  level:
+    org.atmosphere: warn
